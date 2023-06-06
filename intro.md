@@ -41,7 +41,7 @@ Here we show examples of interacting with a deployed game mananger contract usin
 # Main Components
 
 ## Circuits 
-This directory contains circom code to implement encryption and decryption of the zk poker game. It also contains the corresponding verifier contracts generated with **snarkjs**. [View the Code](https://github.com/Poseidon-ZKP/Poseidon-ZKP/tree/main/packages/circuits)
+This directory contains circom code to implement encryption and decryption for the zk poker game. It also contains the corresponding verifier contracts generated with **snarkjs**. [View the Code](https://github.com/Poseidon-ZKP/Poseidon-ZKP/tree/main/packages/circuits)
 ## Shuffle Contracts
 This directory contains contracts that implement management of the zk poker game. It comprises the central management contract, **ShuffleManager.sol**, as well as supplementary contracts tasked with operations such as encryption and decryption. The manager contract is responsible for creating new games, registering players, checking game states, and performing various operations required for game management. [View the Code](https://github.com/Poseidon-ZKP/Poseidon-ZKP/tree/main/packages/contracts/contracts/shuffle)
 ## Game Contracts

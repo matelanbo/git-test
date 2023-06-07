@@ -3,41 +3,9 @@ Zkshuffle provides easy access for Ethereum developers to create "mental poker" 
 
 
 # State Diagram
-The following state diagram provides a comprehensive overview of the game process governed by the  **ShuffleManager** contract. Please be aware that this diagram is a full descrption of the state transitions within the contract. The most intermediate procedures, such as encryption, are encapsulated into **zkshuffle** library. Therefore, SDK users will not implement these intermediate steps themself.
+The following state diagram provides an overview of the game process managed by the  **ShuffleManager** contract. To initiate a new game, it must first be created. Upon creation, the manager contract assigns a unique ID to this game and players can join the game with that ID. Once the final player has registered, the game starts. Players can check the current turn within the game. If it's their turn to perform an action (shuffle, deal or open), they carry out the action accordingly.
+![Image text](https://github.com/matelanbo/git-test/blob/main/SimpleStateDiagram.svg)
 
-To initiate a new game, it must first be created with a supported size. Upon creation, the manager contract assigns a unique ID to this game and transfers it into the registration state. Within this phase, the manager contract accommodates player registrations until all available slots are filled. Players must provide a valid public key during registration, with all keys eventually aggregated into a single, collective public key. Once the final player has registered, the manager contract moves the game into the shuffle state. In this state, each play will correctly shuffle and encrpyt the cards. After the last player has shuffled their cards, the game switches into the cards dealing state. In this state, cards will be  dealt to players and the decrypted cards will be updated. Upon completion of the dealing process, the manager contract advances the game to the cards opening state. During this stage, each player will reveal specified cards, with the decrypted cards being updated accordingly. After all players have openned their cards, based on specific game logic, the game will conclude if the winner is determined, otherwise it will return to the dealing state and continue the cycle.
-![Image text](https://github.com/matelanbo/git-test/blob/main/stateDiagram.svg)
-# Examples
-Here we show examples of interacting with a deployed game mananger contract using **zkshuffle**. A full totuorial can be found via ![totuorial]()
-- To create a zkShuffle instance with a given shuffleManager contract address and a player's signer
-
-  ```ts
-      const player = await zkShuffle.create(ShuffleManagerContract, signer)
-  ```
-
-- To join a game with specified gameID
-  ```ts
-      const playerIdx = await player.joinGame(gameId)
-  ```
-
-- To check player's turn in this game
-  ```ts
-      const turn = await player.checkTurn(gameId)
-  ```
-
-- If it's player's shuffle turn, shuffle the card
-  ```ts
-      await player.shuffle(gameId)
-  ```
-
-- If it's player's deal turn, draw the card
-  ```ts
-      await player.draw(gameId)
-  ```
-
-- If it's player's open turn, open specified cards
-  ```ts
-      const cards[] = await player.open(gameId, cardIds)
 # Main Components
 
 ## Circuits 
